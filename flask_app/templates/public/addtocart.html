@@ -1,0 +1,93 @@
+{% extends 'public/layout.html' %}
+
+{% block title %}
+Cart
+{% endblock title %}
+
+
+{% block content %}
+{% if product %}
+{% set prod_img="upload/"+product.prod_img %}
+<div class="container my-5">
+	<div class="row">
+		<div class="col-lg-3 col-6">
+			<figure class="figure">
+				<img src="{{ url_for('static', filename=prod_img ) }}" class="figure-img img-fluid rounded" alt="...">
+				<figcaption class="figure-caption"></figcaption>
+			</figure>
+		</div>
+		<div class="col-lg-5 col-6">
+			<h3>{{ product.prod_name }}</h3>
+			<p class="text-muted">{{ product.prod_des }}</p>
+			<br><br>
+			<h4 class="text-danger">Rs {{ product.prod_price }}</h4>
+			<form action="/add_to_cart?id={{product.prod_id}}" method="POST">
+				<button type="submit" class="btn btn-warning font-weight-bolder text-danger  col-6 my-3">Buy
+					Now</button>
+
+		</div>
+		<div class="col-lg-3 col-12">
+
+			<label for="province">Province:</label>
+			<select name="province" class="form-control" id="province" required>
+				<option value="">None</option>
+				<option value="Punjab">Punjab</option>
+			</select>
+			<br>
+			<label for="city">City:</label>
+			<select name="city" class="form-control" id="city" required>
+				<option value="">None</option>
+				<option value="Lahore">Lahore</option>
+			</select>
+			<br>
+			<label for="town">Town:</label>
+			<select name="town" id="town" class="form-control" required>
+				<option value="">None</option>
+				<option value="Waggah">Waggah</option>
+				<option value="Aziz Bhatti">Aziz Bhatti</option>
+				<option value="Gulberg">Gulberg</option>
+				<option value="Iqbal">Iqbal</option>
+				<option value="Nishtar">Nishtar</option>
+			</select>
+			<br>
+			<div class="form-group">
+				<label for="address">Address</label>
+				<input type="text" class="form-control" id="address" name="address" placeholder="Enter your address"
+					required>
+			</div>
+			{%set shipping_fee=0%}
+			{%if product.prod_price<1000%} {%set shipping_fee=75%} {%elif product.prod_price<2000 %} {%set
+				shipping_fee=110%} {%elif product.prod_price>2000 %}
+				{%set shipping_fee=160%}
+				{%endif%}
+				<div class="input-group mt-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text font-weight-bolder">Shipping fee: RS.</span>
+					</div>
+					<input type="text" class="form-control font-weight-bolder" id="shipping_fee" name="shipping_fee"
+					 value="{{ shipping_fee }}" readonly>
+
+				</div>
+				{% set total = product.prod_price+ shipping_fee %}
+				<div class="input-group mt-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text font-weight-bolder">Total : RS.</span>
+					</div>
+					<input type="text" id="total" name="total" class="form-control font-weight-bolder" value="{{total}}"
+						readonly>
+
+				</div>
+
+				</form>
+		</div>
+
+	</div>
+
+</div>
+
+{% endif %}
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+body{
+   font-family: 'Poppins', sans-serif;
+    /* background: url("/images/background-1.jpg") no-repeat;
+    background-size: cover; */
+
+}
+#brand_name{
+    font-size: 30px;
+    text-decoration: none;
+    color: #ca131c;
+}
+/* #brane_name:hover{ */
+
+#brand_name i{
+    margin-right:10px;
+    
+}
+nav{
+    position: fixed;;
+    top:0;
+    z-index: 1;
+    padding: 0;
+    background-color: #000000;
+}
+.nav-item{
+    margin:0 20px;
+}
+.nav-item >.nav-link{
+    font-size: 14px;
+    color:#000000;
+    font-weight: 600;
+}
+.trolly{
+    font-size: 20px;
+}
+#sidebar{
+    padding:10px;
+}
+#sidebar h4{
+    font-size: 15px;
+}
+
+#sidebar .subcategory label{
+    font-size:13px;
+}
+#sidebar .subcategory{
+    padding-left: 10px;
+}
+.product_row .product {
+    padding:10px;
+   /* border: 1px solid #000;*/
+   transition: all ease 0.3s;
+
+
+}
+.product_row .product img{
+    width:100%;
+
+}
+.product_row .product .price{
+    font-weight: 600;
+    margin-top: 5px;
+    color: #f72604;
+}
+.product_row .product  .p_name{
+        text-align: left;
+        display: block;
+    margin: 10px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    overflow: hidden;
+    height: 50px;
+    width: 100%;
+    text-overflow: ellipsis;
+}
+.product_row .product:hover{
+    transform: scale(1.04);
+    box-shadow: 5px 5px 10px 10px #bfbcbc;
+}
+
+
+/* footer style starts here */
+
+footer{
+    position: static;
+    left:0;
+    bottom:0; 
+    width:100%;
+    z-index:1;
+    color: white;
+    background-color: #000000;
+    padding:20px;
+}
+footer h6{
+    font-weight: bold;
+}
+footer a{
+    text-decoration: none;
+    color:gray;
+    transition: all ease 0.3s;
+}
+footer a:hover{
+    color:#006FAB;
+    text-decoration:none;
+}
+footer ul{
+    list-style:none;
+}
+#facebook{
+    color:#4867AA;
+}
+#youtube{
+    color:#FF0000;
+}
+#twitter{
+    color:#1C9CEA;
+}
+#linkedin{
+    color:#006FAB;
+}
+#google_plus{
+    color:#C2443A;
+}
+
+/* footer style end here */
+
+
+/* login form styling starts here */
+
+
+#login_form{
+    border-top: 4px solid #1293de;
+    z-index:1;
+    padding:20px;
+    box-shadow: 1px 4px 10px 5px #888888;
+}
+#login_form h6{
+    margin: 0;
+    font-size: 20px;
+    height: 40px;
+    text-align: center;
+    border-bottom: 2px solid #1293de ;
+    margin-bottom: 30px;
+}
+#form_label{
+    font-size: large;
+}
+
+#exampleInputEmail1,#exampleInputPassword1{
+    box-sizing: border-box;
+    width: 100%;
+    /* color: white; */
+    border: 2px solid #1293de;
+    background: #f4f4f5;
+    font-size: 15px 10px;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+}
+#button1{
+    border: none;
+    width: 100%;
+    background: #1293de;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+#Login_Form a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-family: arial;
+    font-size: 15px;
+    margin:20px;
+}
+#Login_Form a:hover{
+    text-decoration:underline;
+}
+/* 
+login form styling code ends here */
+
+
+
+/* styling code for about page */
+#about_bms{
+    min-height: 95vh;
+}
+.about_title{
+    margin-top:20px;
+    margin-bottom: 30px;
+    
+}
+.about_title h3{
+    font-family: 'Ubuntu', sans-serif;
+    font-size:35px;
+}
+.about_title span{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 200px;
+    height: 3px;
+    background: crimson;
+    transform: translateX(-50%);
+}
+.about_content img{
+    height: 100%;
+    width: 100%;
+}
+.about_content{
+    margin-top:20px;
+    padding:20px;
+    margin-bottom: 30px;
+}
+.about_content h4{
+    font-size:30px;
+    color:crimson;
+}
+.about_content p{
+    text-align: justify;
+    font-size:17px;
+    padding: 10px;
+    line-height: 25px;
+}
+.about_team{
+    background: #111111;
+    color:white;
+    
+
+}
+.about_team .about_teamMembers .profile_image{
+    margin:10px 10px;
+    margin-bottom: 30px;
+    padding:10px 30px;
+    transition: 2s all ease;
+}
+.about_team .about_teamMembers .profile_image img{
+    width:200px;
+    margin:15px 50px;
+    border-radius: 100%;
+    border:5px solid crimson;
+    transition: 1s all ease;
+}
+.about_team .about_teamMembers .profile_image h5{
+    font-size: 1.5rem;
+        margin: 5px 0px;
+    padding: 5px 10px;
+    border-bottom: 2px solid crimson;
+    transition: 1s all ease;
+}
+.about_team .about_teamMembers .profile_image p{
+    font-size:1.2rem;
+    font-weight: 500;
+}
+.item-inner img{
+    width:200px;
+    margin:15px 50px;
+    border-radius: 100%;
+    border:5px solid crimson;
+    transition: 1s all ease;
+}
+.about_team .about_teamMembers .profile_image:hover{
+    background:crimson;
+}    
+.about_team .about_teamMembers .profile_image:hover img{
+    border-color:#ffffff;
+}
+.about_team .about_teamMembers .profile_image:hover h5{
+    border-color:#ffffff;
+}
+
+/* about page code end here */
+/*contact page  css code start here*/
+
+.contact_data{
+    padding:10px;
+    margin-bottom:30px;
+    min-height: 75vh;
+}
+.contact_data p{
+    text-align: justify;
+    text-indent: 15px;
+}
+.contact_data .label{
+        margin-top: 0px;
+    padding: 2px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.contact_data .label_description{
+        font-family: 'Poppins';
+    color: black;
+    font-size: 18px;
+    color: #000000a3;
+    margin-left: 18px;
+    
+}
+.contact_data .icon{
+        font-size: 30px;
+    padding: 10px;
+    padding-left: 20px;
+    color: crimson;
+}
+.contact_data #exampleInputText1, #exampleInputText2, #exampleInputEmail1,#exampleFormControlTextarea1{
+    
+    margin:12.5px 0px 12.5px 0px;
+    padding: 10px;
+    background: white;
+    font-size: 15px;
+    background: white;
+    font-weight: 300;
+}
+.contact_data #exampleInputText1{
+    width: 48%;
+    float: left;
+}
+.contact_data #exampleInputEmail1{
+     width: 48%;
+     margin-left: 15px;
+     float: right;
+}
+.contact_data #exampleInputText2{
+    width: 100%;
+    float: left;
+}
+#contact{
+    margin-top:30px;
+}
+.contact_data h5{
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.contact_data #btn{
+    margin-bottom: 50px;
+}
+/*contact page  css code End here*/
+
+
+/*signup page styling starts here*/
+
+
+
+#signUp_box{
+    padding:20px;
+    background: #ffffff;
+    border-radius: 50px;
+    box-shadow: 2px 2px 10px 10px #83939c;
+}
+#signUp_box h3{
+    color: #1777af;
+    font-size: 35px;
+    padding: 10px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #1777af;
+    margin: 10px auto;
+}
+#signUp_box label{
+    color:#111;
+    font-size:22px;
+    padding: 0px 10px;
+}
+
+#signUp_box input{
+    font-size: 20px;
+    display: block;
+    padding:10px;
+    padding-left: 40px; 
+    background: #f2f2f2;
+    color:#000;
+    border:2px solid #1777af;
+    border-radius: 50px;
+    width:100%;
+}
+#signUp_box button{
+    width: 80%;
+    border-radius: 20px;
+    margin: 30px auto 5px auto;
+    display: block;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+#updateProfile{
+    display: none;
+}

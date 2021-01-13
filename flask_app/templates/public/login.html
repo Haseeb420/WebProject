@@ -1,0 +1,32 @@
+{% extends 'public/layout.html' %}
+
+
+{% block title %}
+Login
+{% endblock title %}
+{% block content %}
+    <div class="container" id="login_box">
+    <div class="row">
+        <div class="col-md-4 col-6 m-auto " id="login_form">
+            <h6 class="text-center">Login Here</h6>
+            <form action="{{url_for('login')}}" method="POST">
+                <div class="form-group">
+                    <label for="username" id="form_label">Email address</label>
+                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" name="username"
+                        placeholder="Enter your username here" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" id="form_label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                        placeholder="Enter your password here" required>
+                </div>
+                <button type="submit" id="button1" class="btn btn-primary">Submit</button>
+            </form>
+            <a href=" {{ url_for( 'change_password' ) }} " class="float-left d-inline-block">Forgot Password</a>
+            <a href="index.html" class="float-right d-inline-block">Back To Homepage</a><br>
+            <a href="/sign_up" class="float-left d-inline-block">Don't have an account?SignUp</a>
+           
+        </div>
+    </div>
+</div>
+{% endblock content %}

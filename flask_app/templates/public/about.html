@@ -1,0 +1,100 @@
+{% extends 'public/layout.html' %}
+
+{% block title %}
+About US
+{% endblock title %}
+
+{% block content %}
+
+<div id="about_bms" class="container">
+    <div class="row">
+        <div class="col-12 about_title" id="">
+            <h3 class="text-center">About Store</h3>
+            <span class="m-auto"></span>
+        </div>
+        <div class="col-md-4 col-12 about_content ">
+            <img src="{{url_for('static',filename='img/logo1.png')}}" alt="malik">
+        </div>
+        <div class=" col-12 col-md-8 about_content">
+            <h4>Online Shoes Store</h4>
+            <p>Online Shoes Store         username for login. Manager can also interact with system through his Id and password, moreover manager
+                has name and contact number. Customer can eligible to interact with system only when he/she has account
+                in bank. Each account has ID, name and contain amount. Customer login to his/her account using his/her
+                id allotting by the Online Shoes Storeand password. Through which he/she can transfer amount and can see details of
+                Online Shoes Storeaccount and he/she can update his/her password. Customer may or may not apply for loan. If customer
+                apply for loan it will approve by the manager under terms and conditions and desirable time period. Loan
+                will return back in the form of installments. There is a super admin in Online Shoes StoreManagment System who will
+                manage all Banks under his/her area included Managers, Customers, Employees, Accounts and all other
+                things related to different Banks Branches.</p>
+        </div>
+
+    </div>
+</div>
+<div id="about_team" class=" about_team container-fluid">
+    <div class="row">
+        <div class="col-12 about_title" id="">
+            <h3 class="text-center">About Team</h3>
+            <span class="m-auto"></span>
+        </div>
+        <div class="col-12 about_teamMembers">
+            <div class="row">
+                <div class="col-md-3 offset-1 col-12">
+                    <div class="profile_image">
+                        <img src="{{url_for('static',filename='img/haseeb.jpg')}}" alt="">
+                        <h5 class="text">Muhammad Haseeb</h5>
+                        <p>Web Developer <br>
+                            UI Designer <br>
+                            Freelancer</p>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1 col-12">
+                    <div class="profile_image">
+                        <img src="{{url_for('static',filename='img/haseeb.jpg')}}" alt="">
+                        <h5 class="text">Saad Raza</h5>
+                        <p>Front Developer <br>
+                            App Developer <br>
+                            TikToker</p>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1 col-12">
+                    <div class="profile_image">
+                        <img src="{{url_for('static',filename='img/haseeb.jpg')}}" alt="">
+                        <h5 class="text">Mudassar Hussnain</h5>
+                        <p>Content Writter <br>
+                            Blogger <br>
+                            Politician</p>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1 col-12">
+                    <div class="profile_image">
+                        <img src="{{url_for('static',filename='img/shairo.jpg')}}" alt="">
+                        <h5 class="text">Shair Khan</h5>
+                        <p>Web Developer <br>
+                            Youtuber <br>
+                            Freelancer</p>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1 col-12">
+                    <div class="profile_image">
+                        <img src="{{url_for('static',filename='img/haseeb.jpg')}}" alt="">
+                        <h5 class="text">Nouman Sadiq</h5>
+                        <p>Blooger <br>
+                            Content Writter<br>
+                            Back-End Developer</p>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-1 col-12">
+                    <div class="profile_image">
+                        <img src="{{url_for('static',filename='img/ali.jpg')}}" alt="">
+                        <h5 class="text">Ali Raza</h5>
+                        <p>Web Developer <br>
+                            Content Writter<br>
+                            Freelancer</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

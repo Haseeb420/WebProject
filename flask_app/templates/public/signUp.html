@@ -1,0 +1,54 @@
+{% extends 'public/layout.html' %}
+<!-- ^[a-z][a-zA-Z0-9_]{3,20}@[a-zA-Z]{1,8}.{1,} -->
+
+{% block title %}
+SignUp
+{% endblock title %}
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-6 col-8 m-auto" id="signUp_box">
+            <h3 class="text-center text-capitalize">SignUp For Free</h3>
+            <form class="my-5" action="/signUp" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fname">First Name : </label>
+                        <input type="text" class="form-control" onkeyup="validatefname()" name="fname" id="fname" placeholder="First name" required>
+                        <span class="text-danger text-center my-3" id="fname_error"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" onkeyup="validatelname()" name="lname" id="lname" placeholder="last name" required>
+                        <span class="text-danger text-center my3" id="lname_error"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" onkeyup="validateEmail()" placeholder="abc@xyz.com" name="email" required>
+                    <span class="text-danger text-center my3" id="email_error"></span><br>
+                    <span class="text-danger text-center my3" id="unique_email_error"></span>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="email">Phone</label>
+                    <input type="text" class="form-control" id="phone" onkeyup="validatePhone()" placeholder="03*********" name="phone" required>
+                    <span class="text-danger text-center my3" id="phone_error"></span><br>
+                    <span class="text-danger text-center my3" id="unique_phone_error"></span>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" onkeyup="validatePassword()" name="password" id="password" placeholder="*************">
+                    <span class="text-danger text-center my3" id="password_error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_password" onkeyup="confirmPassword()" name="confirm_password" placeholder="*************">
+                    <span class="text-danger text-center my3" id="confirm_password_error"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

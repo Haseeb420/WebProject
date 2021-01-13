@@ -1,0 +1,33 @@
+{% extends 'admin/layout.html' %}
+
+{% block title %}
+Sales
+{% endblock title %}
+
+{% block content %}
+
+<div class="container" id="profileData">
+    <h3 class="h1 text-center">
+        Sales
+    </h3>
+    <hr>
+    <div class="row mt-5 pt-3">
+        <div class="col-3 offset-1  the_box ">
+            <h4>Total Sales</h4>
+            <hr>
+            {%if total_sales%}
+            <p class="text-right font-weight-bolder">Rs.{{total_sales}}</p>
+            {%endif%}
+        </div>
+        <div class="col-3 offset-1 the_box ">
+            <h4>Total Profit</h4>
+            <hr>
+            {%if profit%}
+            <p class="text-right font-weight-bolder">Rs.{{profit}}</p>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

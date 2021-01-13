@@ -1,0 +1,45 @@
+{% extends 'admin/layout.html' %}
+
+{% block title %}
+Users
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="display-4 text-center">
+            All Users
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">User Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Password</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+
+            {%for c in customer %}
+            <tr>
+                <th scope="row">{{ c.id }}</th>
+                <td>{{ c.name }}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.phone }}</td>
+                <td>************</td>
+
+            </tr>
+            {%endfor%}
+            
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

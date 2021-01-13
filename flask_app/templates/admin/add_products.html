@@ -1,0 +1,200 @@
+{% extends 'admin/layout.html' %}
+
+{% block title %}
+Add_Products
+{% endblock title %}
+
+{% block content %}
+
+<div class="container" id="profileData">
+    <h3 class="h1 text-center">
+        Add New Products
+    </h3>
+    <hr>
+
+
+</div>
+
+<div class="container">
+    <form action=" {{ url_for( 'add_product' ) }}" method="POST" enctype="multipart/form-data" class="row my-5 bg-light text-black">
+        <div class="form-row col-12 p-2">
+            <div class="form-group d-block col-8">
+                <label for="fname">Product Name : </label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Product Name"
+                    required>
+                <span class="text-danger text-center my-3" id="fname_error"></span>
+            </div>
+            <div class="form-group col-2 ml-left offset-1 ">
+                <!-- <label class="btn btn-info my-3" for="my-file-selector">
+                    <input id="my-file-selector" name="image" type="file" style="display:none"
+                        onchange="$('#upload-file-info').html(this.files[0].name)">
+                    Upload Product Img
+                </label>
+                <span class='label label-info' id="upload-file-info"></span> -->
+                
+                    <div class="form-group ">
+                      <label for="exampleFormControlFile1" class="">Upload Img</label>
+                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                 
+            </div>
+        </div>
+        <div class="form-row col-12 p-3">
+            <div class="form-group d-block col-12">
+                <label for="fname">Product Description : </label>
+                <textarea name="product_des" class="form-control" id="product_des"></textarea>
+            </div>
+        </div>
+        <!-- <hr>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <p class="h5">
+                        Select Categoris
+                    </p>
+                </div>
+                <div class="col-6">
+                    <p class="h5">
+                        Select Colors
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="form-row col-12">
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="male" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Male
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="female" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="child" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Child
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="mahroon" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Mahroon
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="black" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Black
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="blue" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Blue
+                    </label>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 ">
+                    <p class="h5">
+                        Select Sizes
+                    </p>
+                </div>
+            </div>
+        </div> <hr>
+        <div class="form-row col-12">
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="38" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        38''
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="39" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        39''
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="40" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        40''
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="41" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        41''
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="42" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        42''
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-2 p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="43" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        43''
+                    </label>
+                </div>
+            </div>
+        </div> -->
+        <hr>
+        <div class="form-row col-12 p-2">
+            <div class="form-group d-block col-4">
+                <label for="fname">Product Price : </label>
+                <input type="text" class="form-control" name="price" id="price" placeholder="Enter Product Price"
+                    required>
+                <span class="text-danger text-center my-3" id="fname_error"></span>
+            </div>
+            <div class="form-group d-block col-4 offset-2">
+                <label for="fname">Product Stock : </label>
+                <input type="text" class="form-control" name="stock" id="stock" placeholder="Enter Product Price"
+                    required>
+                <span class="text-danger text-center my-3" id="fname_error"></span>
+            </div>
+        </div>
+        <button class="btn btn-success col-3 mx-5 my-5">Add Product</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}

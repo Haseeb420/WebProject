@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Courgette");
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    background: green;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+body{
+   font-family: 'Poppins', sans-serif;
+    /* background: url("/images/background-1.jpg") no-repeat;
+    background-size: cover; */
+}
+#brand_name{
+    font-size: 25px;
+    color: #ca131c;
+}
+
+#brand_name i{
+    margin-right:10px;
+    
+}
+.navbar{
+    background: #b088f9;
+    position:sticky;
+    top:0;
+    z-index: 1;
+    padding: 0;
+}
+nav{
+    position: fixed;
+    top: 0;
+    left:0;
+}
+nav .navbar-nav .nav-item{
+    margin-right: 70px;
+}
+.nav-item >.nav-link{
+    font-size: 20px;
+    color:#000000;
+    font-weight: 600;
+}
+
+
+.dropdown-item{
+    font-size: 14px;
+}
+/* 
+.wrapper{
+     background: gray; 
+
+} */
+#side_menu{
+        width:250px;
+        height: 100%;
+        background: #f1f1f1;
+        position: fixed;
+        z-index: 2000;
+        top:0;
+        left: 0;margin-top: 63px;
+
+}
+#side_menu .nav-item{
+    margin:5px 0;
+    padding:5px;
+}
+#side_menu .nav-item >.nav-link{
+    font-size: 18px;
+    text-align: left;
+    margin:0;
+    color:rgb(184, 181, 181);
+
+}
+#side_menu .nav-item >.nav-link i{
+    margin:0 5px;
+    font-size: 20px;
+}
+#side_menu .nav-item:hover .nav-link{
+    /* background: rgb(255, 255, 255); */
+    color:black;
+}
+#content{
+    margin-left:260px;
+    padding:20px;
+}
+#updateProfile{
+    display: none;
+}
+
+.the_box{
+    background: #f1f1f1;
+    border-radius: 20px;
+    box-shadow: -2px 1px 13px 9px #aaa;
+    padding: 10px;
+    padding-left: 30px;
+}
+.the_box h4{
+    font-size: 2rem;
+    font-weight: 900;
+}
+.the_box p{
+    margin: 20px 40px 10px 0px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+
+@media screen and (max-width:768px)
+{
+    
+#content{
+    margin-left:0;
+}
+}

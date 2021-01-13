@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html' %}
+
+{% block title %}
+Feedbacks
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1 class="display-4 text-center">
+            All Users Feedbacks
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Serial No.</th>
+                <th scope="col">User Name</th>
+                <th scope="col">User Email</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Content</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {%for c in contacts %}
+            <tr>
+                <th scope="row">{{c["id"]}}</th>
+                <td>{{c["name"]}}</td>
+                <td>{{c["email"]}}</td>
+                <td>{{c["subject"]}}</td>
+                <td>{{c["content"]}}</td>
+            </tr>
+            {%endfor%}
+            
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

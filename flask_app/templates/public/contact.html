@@ -1,0 +1,101 @@
+{% extends 'public/layout.html' %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+
+
+{% block content %}
+
+<div class="container contact_data">
+    <div class="row">
+        <!-- 
+all the contant page content start here -->
+        <div class="col-12 about_title" id="">
+            <h3 class="text-center">Contact US</h3>
+            <span class="m-auto"></span>
+        </div>
+    </div>
+    <div class="row" id="contact">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Get in Touch with us</h5>
+                    <p>We are always here to help you. We appriciate your feedbacks. And Try our 100% to enter your
+                        complains. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3"><i class="fas fa-map-marker-alt phone-alt icon"></i></div>
+                <div class="col-9">
+                    <div class="label">Address:</div>
+                    <p class="label_description">Lahore, Punjab, Pakistan</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <i class="fas fa-envelope icon"></i></i>
+                </div>
+                <div class="col-9">
+                    <div class="label">Email</div>
+                    <p class="label_description">contact@oss.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <i class="fas fa-phone-alt icon"></i>
+                </div>
+                <div class="col-9">
+                    <div class="label">Helpline</div>
+                    <p class="label_description">0800-0000</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--         description about bank ends here -->
+
+
+        <!-- 
+all the feedback or form code start here for contact page -->
+        <div class="col-md-7 offset-md-1 contact_form">
+            <div class="row">
+                <h5>Message Us </h5>
+            </div>
+            <form action="/contact_us" method="post">
+                <div class="form-group">
+                    <input type="text" placeholder="Enter your Name" class="form-control" name="name"
+                        id="exampleInputText1">
+                </div>
+                <div class="form-group">
+                    <input type="Email" placeholder="Enter your Email" class="form-control" name="Email"
+                        id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Subject" class="form-control" name="subject" id="exampleInputText2">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Enter your Complain or  Give us your Feedback "
+                        name="content" id="exampleFormControlTextarea1" rows="4"></textarea>
+                </div>
+                <button type="submit" id="btn" class="btn btn-primary">Send</button>
+            </form>
+            {%if msg%}
+            <p class="text-primary">{{msg}}</p>
+            {%elif error_msg%}
+            <p class="text-danger">{{error_msg}}</p>
+
+            {%endif%}
+        </div>
+
+        <!-- 
+all the feedback or form code start here for contact page -->
+
+    </div>
+</div>
+
+</div>
+
+<!--  contact page content ends here -->
+{% endblock content %}
