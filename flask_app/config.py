@@ -4,7 +4,7 @@ app_configration = {
     "db_user_password": "",
     "db_name": "test",
     "secret_key":"S4CdQ-NfsCTywryfoo8uTg",
-    "email_user": "",
-    "email_user_password": "",
+    "email_user": "muhammadhaseebtcf@gmail.com",
+    "email_user_password": "Haseeb.420",
     "upload_folder":"\\Web Project\\Shoes Store\\app\\static\\upload"
 }

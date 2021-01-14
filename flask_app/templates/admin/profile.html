@@ -45,31 +45,31 @@ Profile
         Update Profile Data
     </h3>
     <hr>
-
+    <form action=" {{url_for('update_profile')}}" onsubmit="return validateProfile()" method="post">
     <div class="row">
         <div class="col">
             <label for="Name">Name :</label>
-            <input type="text" class="form-control" id="user_name" value="{{data['name']}}">
+            <input type="text" class="form-control" id="user_name" name="name" value="{{data['name']}}">
         </div>
     </div>
     <p id="name_error" class="text-center h6 text-danger"></p>
     <div class="row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="user_email" value="{{data['email']}}" readonly>
+            <input type="email" class="form-control" id="user_email" name="email" value="{{data['email']}}" readonly>
             <p id="email_error" class="text-center h6 text-danger"></p>
         </div>
         <div class="col">
 
             <label for="phone">Phone :</label>
-            <input type="number" class="form-control" id="user_phone" value="{{data['phone']}}">
+            <input type="number" class="form-control" id="user_phone" name="phone" value="{{data['phone']}}">
             <p id="phone_error" class="text-center h6 text-danger"></p>
         </div>
     </div>
-    <button class="btn btn-success d-block mx-auto my-3" onclick="validateProfile()">Save Profile</button>
+    <button class="btn btn-success d-block mx-auto my-3" type="submit">Save Profile</button>
 
 </div>
-
+</form>
 
 </div>
 

@@ -145,9 +145,10 @@ def profile():
             data = data[0]
             if session['rank'] == 1:
                 return render_template("admin/profile.html", name="Admin", data=data)
-
             else:
                 return render_template("public/profile.html", name=session['name'], data=data)
+        else:
+            return redirect(url_for('loginPage'))
 
     else:
         return redirect(url_for('loginPage'))
@@ -194,7 +195,10 @@ def contact_us():
 @app.route('/change_password', methods=["POST", "GET"])
 def change_password():
     if session.get('id') != None:
-        return render_template('admin/changePassword.html', name="Admin")
+        if session['rank']==1:
+            return render_template('admin/changePassword.html', name=session['name'])
+        else:
+            return render_template('public/changePassword.html', name=session['name'])
     else:
         return redirect(url_for('loginPage'))
 
@@ -312,9 +316,44 @@ def add_to_cart():
         return redirect(url_for('loginPage'))
 
 
+@app.route('/update_profile',methods=["POST","GET"])
+def update_profile():
+    if session.get('email')!=None:
+        if session["email"]:
+            myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
+                        app_configration["db_user_password"], app_configration["db_name"])
+            if request.method=="POST":
+                form=request.form
+                name=form['name']
+                email=form['email']
+                phone=form['phone']
+                if myDB.update_profile(session['id'],name,email,phone):
+                    data = myDB.get_data(email)
+                    data = data[0]
+                    session['id'] = data["id"]
+                    session["name"] = data["name"]
+                    session["email"] = data["email"]
+                    session["phone"] = data["phone"]
+                    session["password"] = data["password"]
+                    session['rank'] = data["rank"]
+                    return redirect( url_for( 'profile' ) )
+                else:
+                    return redirect( url_for( 'profile' ) )
+        
+            else:
+                return redirect( url_for( 'profile' ) )
+    else:
+        return redirect( url_for( 'loginPage' ) )
+        
 @app.route('/logout')
 def logout():
-    if session["email"]:
-        session.clear()
+    if session.get('email')!=None:
+        if session["email"]:
+            session.clear()
+            return redirect( url_for( 'home' ) )
+        else:
+            return redirect( url_for( 'loginPage' ) )
+    else:
+        return redirect( url_for( 'loginPage' ) )
 
-    return render_template('public/login.html')
+   

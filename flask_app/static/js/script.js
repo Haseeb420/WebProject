@@ -9,16 +9,25 @@ const validateProfile = () => {
     let name = document.getElementById('user_name').value;
     let email = document.getElementById('user_email').value;
     let phone = document.getElementById('user_phone').value;
-    if (name.length == 0) {
+    name_pattern = /^[A-Z]{1}[a-z]{2,20} [A-Z]{1}[a-z]{2,20}$/
+    email_pattern = /^[a-z][a-zA-Z0-9_]{2,}@[a-z]{2,10}[.]{1}[a-z.]{1,}$/;
+    phone_pattern = /^[03]{2}[0-9]{9}$/;
+
+
+    if (!(name_pattern.test(name))) {
         document.getElementById('name_error').innerHTML = "Name Can't be Empty";
+        return false;
     }
-    else if (email.length == 0) {
-        document.getElementById('email_error').innerHTML = "Name Can't be Empty";
+    else if (!(email_pattern.test(email))) {
+        document.getElementById('email_error').innerHTML = "Enter Valid email ";
+        return false;
     }
-    else if (phone.length == 0) {
-        document.getElementById('phone_error').innerHTML = "Name Can't be Empty";
+    else if (!(phone_pattern.test(phone)) ) {
+        document.getElementById('phone_error').innerHTML = "Enter Valid phone";
+        return false;
     }
 
+    return true;
 }
 
 function validatefname() {
@@ -152,40 +161,3 @@ function check_phone() {
         }
     }
 }
-const province1=["Punjab"];
-const city1=["Lahore"];
-const town1=[""]
-
-let Pakistan={
-    "punjab":
-        {
-            "Lahore":
-                {
-                    "Waggah":["Barki","Hadiara","Minhala","Bhaseen","Lakhodher","Salamatpura","Muslimabad","Dograi Kalan","Sultan Mehmood","Muhammad","Daroghawala"]
-                },
-            "Faisalabad":"City"
-            
-        }
-    
-}
-
-
-// console.log(Pakistan["punjab"])
-console.log(Pakistan["punjab"]["Lahore"]["Waggah"][0])
-for (province in Pakistan){
-    console.log(Pakistan[province])
-    for(cities in province)
-    {
-        console.log(Pakistan[province][cities])
-    //     for(town in cities)
-    //     {
-    //         for(area in town)
-    //         {
-    //             console.log(town[area])
-    //             // console.log(Pakistan[province])
-    //         }
-    //     }
-    }
-}
-
-// "Aziz Bhatti","Nishter","Shalamar","Gulberg","Iqbal"
