@@ -6,61 +6,7 @@ Home
 
 
 {% block content %}
-<div class="navbar bg-light d-lg-none">
-	<ul class="navbar-nav m-auto">
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="Category" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				Categories
-			</a>
-			<div class="dropdown-menu" aria-labelledby="Category">
-				<a class="dropdown-item" href="#">Male</a>
-				<a class="dropdown-item" href="#">Female</a>
-				<a class="dropdown-item" href="#">Childs</a>
-			</div>
-		</li>
-	</ul>
-	<ul class="navbar-nav m-auto">
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="Category" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				Style
-			</a>
-			<div class="dropdown-menu" aria-labelledby="Category">
-				<a class="dropdown-item" href="#">Male</a>
-				<a class="dropdown-item" href="#">Female</a>
-				<a class="dropdown-item" href="#">Childs</a>
-			</div>
-		</li>
-	</ul>
-	<ul class="navbar-nav m-auto">
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="Category" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				Color
-			</a>
-			<div class="dropdown-menu" aria-labelledby="Category">
-				<a class="dropdown-item" href="#">Male</a>
-				<a class="dropdown-item" href="#">Female</a>
-				<a class="dropdown-item" href="#">Childs</a>
-			</div>
-		</li>
-	</ul>
-	<ul class="navbar-nav m-auto">
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="Category" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				Sizes
-			</a>
-			<div class="dropdown-menu" aria-labelledby="Category">
-				<a class="dropdown-item" href="#">Male</a>
-				<a class="dropdown-item" href="#">Female</a>
-				<a class="dropdown-item" href="#">Childs</a>
-			</div>
-		</li>
-	</ul>
-	<hr>
-</div>
+
 
 <!-- main code starts here -->
 
@@ -71,37 +17,32 @@ Home
 				<h4>Categories</h4>
 				<hr>
 				<div class="subcategory">
-					<input type="checkbox" name="male" id="male" \>
-					<label for="#male">Male</label>
-				</div>
-
-				<div class="subcategory">
-					<input type="checkbox" name="female" id="female" \>
-					<label for="#female">Female</label>
-				</div>
-
-				<div class="subcategory">
-					<input type="checkbox" name="Child" id="Child" \>
-					<label for="#Child">Child</label>
+					{%if category%}
+					{% for c in category %}
+					<input type="checkbox" name="{{c}}" id="{{c}}"/>
+					<label class="font-weight-bold" for="#male">{{c}}</label>
+					<br>
+					{%endfor%}
+					{%endif%}
 				</div>
 				<hr>
 				<h4>Style</h4>
 				<hr>
 				<div class="subcategory">
-					<input type="checkbox" name="basic" id="basic" \>
+					<input type="checkbox" name="basic" id="basic"/>
 					<label for="#basic">Basic</label>
 				</div>
 				<div class="subcategory">
-					<input type="checkbox" name="fashion" id="fashion" \>
+					<input type="checkbox" name="fashion" id="fashion"/>
 					<label for="#fashion">Fashion</label>
 				</div>
 				<div class="subcategory">
-					<input type="checkbox" name="casual" id="casual" \>
+					<input type="checkbox" name="casual" id="casual" />
 					<label for="#casual">Casual</label>
 				</div>
 
 				<div class="subcategory">
-					<input type="checkbox" name="formal" id="formal" \>
+					<input type="checkbox" name="formal" id="formal" />
 					<label for="#formal">Formal</label>
 				</div>
 

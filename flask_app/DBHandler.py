@@ -208,9 +208,10 @@ class DBHandler:
             data = mydb_cursor.fetchall()
             if data:
                 for x in data:
-
                     products.append(
                         Product(x[0], x[1], x[2], x[3], x[4], x[5]))
+                    
+            print(products)
         except Exception as E:
             print(str(E))
             return products
@@ -316,7 +317,7 @@ class DBHandler:
                 print(contacts_list)
                 return contacts_list
 
-    def add_new_product(self, p_name, product_desc, product_img, product_stock, product_price):
+    def add_new_product(self, p_name, product_desc, product_img, product_stock, product_price,category):
         mydb = None
         add_new_product_flag = False
         try:
@@ -324,9 +325,9 @@ class DBHandler:
                 self.host, self.db_user, self.db_pswd, self.db_name)
             mydb_cursor = mydb.cursor()
             sql = """ INSERT INTO PRODUCT (product_name, product_des, product_img, product_stock,
-            product_price  ) VALUES ( %s , %s , %s , %s , %s );"""
+            product_price, category  ) VALUES ( %s , %s , %s , %s , %s ,%s);"""
             argumnets = (p_name, product_desc, product_img,
-                         product_stock, product_price)
+                         product_stock, product_price,category)
             mydb_cursor.execute(sql, argumnets)
             mydb.commit()
             add_new_product_flag = True
@@ -384,6 +385,31 @@ class DBHandler:
                 mydb.close()
                 return products
 
+    def get_categories(self):
+        mydb = None
+        categories = []
+        try:
+            mydb = pymysql.connect(
+                self.host, self.db_user, self.db_pswd, self.db_name)
+            mydb_cursor = mydb.cursor()
+            sql = "SELECT DISTINCT(category) from product"
+            mydb_cursor.execute(sql)
+            data = mydb_cursor.fetchall()
+            if data:
+                for x in data:
+                    categories.append(x[0])
+                    print(x[0])
+                    
+            print(categories)
+        except Exception as E:
+            print(str(E))
+            return categories
+        finally:
+            if mydb != None:
+                mydb.close()
+                return categories
+            
+        
     def add_to_cart(self, user_id, province, city, town, address, prod_id, price, shipping_fee, total):
         mydb = None
         add_new_product_flag = False
@@ -406,6 +432,7 @@ class DBHandler:
             if mydb != None:
                 mydb.close()
                 return add_new_product_flag
+            
 
     def decrese_stock(self, prod_id, new_stock):
         mydb = None
@@ -427,6 +454,7 @@ class DBHandler:
             if mydb != None:
                 mydb.close()
                 return delete_product_flag
+
 
     def get_order(self):
         mydb = None
@@ -450,6 +478,7 @@ class DBHandler:
             if mydb != None:
                 mydb.close()
                 return products
+            
 
     def get_sales(self):
         mydb = None

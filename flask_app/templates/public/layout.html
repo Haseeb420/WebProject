@@ -16,7 +16,7 @@
     <!-- font awsone icons cdn added here -->
     <script src="{{ url_for( 'static', filename='fontawesome-free-5.8.1-web/js/fontawesome.min.js'  ) }}"></script>
     <script src="{{ url_for( 'static', filename='fontawesome-free-5.8.1-web/js/all.min.js'  ) }}"></script>
-    <script src="https://kit.fontawesome.com/81c44bd5c6.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/81c44bd5c6.js" crossorigin="anonymous"></script> -->
     <title>
         {%block title%}
         {%endblock%}-OnlineShoesStore
@@ -29,26 +29,17 @@
     <!-- navbar code starts here -->
 		<nav class="navbar navbar-expand-lg navbar-dark" id="navigation">
 			<a href="{{url_for('home')}}" id="brand_name" class="navbar-brand text-center d-lg-none text-danger text-uppercase">Online Shoes Store</a>
-			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+            </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          Categories
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			          <a class="dropdown-item" href="#">Male</a>
-			          <a class="dropdown-item" href="#">Female</a>
-			          <a class="dropdown-item" href="#">Childs</a>
-			        </div>
-			      </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('about')}}">About US</a>
                 </li>

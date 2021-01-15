@@ -7,5 +7,6 @@ class Product:
         self.prod_img = prod_img
         self.stock = prod_stock
         self.prod_price = prod_price
+        # self.category = category
         
         

@@ -5,6 +5,7 @@ import os
 
 app_root = os.path.dirname(os.path.abspath(__file__))
 
+UPLOAD_FOLDER = '\\Web Project\\Shoes Store\\app\\static\\upload'
 
 # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -74,12 +75,12 @@ def add_product():
                 price = request.form['price']
                 price = int(price)
                 stock = request.form['stock']
+                category=request.form['category']
                 stock = int(stock)
                 file = request.files['image']
+                
                 print(file.filename)
-                print(app_root)
-                target = os.path.join(
-                    app_root, app_configration["upload_folder"])
+                target = os.path.join(app_root, r'\\Web Project\\Shoes Store\\flask_app\\static\\upload')
                 print(target)
                 filename = file.filename
                 destination = "/".join([target, filename])
@@ -87,7 +88,7 @@ def add_product():
                 file.save(destination)
                 myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
                                  app_configration["db_user_password"], app_configration["db_name"])
-                if myDB.add_new_product(name, product_desc, file.filename, stock, price):
+                if myDB.add_new_product(name, product_desc, file.filename, stock, price,category):
                     products = myDB.get_all_products()
                     print(products)
                     return render_template('admin/products.html', name=session['name'], products=products)

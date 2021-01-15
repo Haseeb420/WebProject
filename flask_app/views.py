@@ -24,13 +24,13 @@ mail = Mail(app)
 @app.route("/")
 @app.route("/home")
 def home():
+    myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
+                             app_configration["db_user_password"], app_configration["db_name"])
+    products = myDB.get_all_products()
+    category = myDB.get_categories()
     if session.get('rank') != None:
         if session['rank'] == 2:
-            myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
-                             app_configration["db_user_password"], app_configration["db_name"])
-            products = myDB.get_all_products()
-            print(products)
-            return render_template("public/index.html", name=session['name'], products=products)
+            return render_template("public/index.html", name=session['name'],category=category,products=products)
         else:
             return render_template("public/login.html")
 
@@ -39,11 +39,15 @@ def home():
                          app_configration["db_user_password"], app_configration["db_name"])
         products = myDB.get_all_products()
         print(products)
-        return render_template("public/index.html", products=products)
+        return render_template("public/index.html",category=category,products=products)
 
 
 @app.route('/about')
 def about():
+    if session.get('rank') != None:
+        if session['rank'] == 2:
+            return render_template('public/about.html',name=session['name'])
+            
     return render_template('public/about.html')
 
 
@@ -80,7 +84,8 @@ def signUp():
             msg=Message(sub,sender=app_configration ['email_user'],
                         recipients=[email])
            
-            msg.body = "Hello {}! \n Welcome to Online Shoes Store\n Thanks for Joining us. Regards \n Online Shoes Store".format(full_name)
+            msg.body = """Hello {}! \n Welcome to Online Shoes Store\n Thanks for Joining us.\n 
+            Regards \n Online Shoes Store""".format(full_name)
             
             mail.send(msg)
             
@@ -95,8 +100,7 @@ def signUp():
             session['rank'] = data["rank"]
             
             if session['rank'] == 1:
-                name = "Admin"
-                return render_template('admin/dashboard.html', name=name, email=email)
+                return render_template('admin/dashboard.html', name=session["name"], email=email)
             elif session['rank'] == 2:
                 
                 return redirect( url_for("home")  )
@@ -144,7 +148,7 @@ def profile():
             data = myDB.get_data(session["email"])
             data = data[0]
             if session['rank'] == 1:
-                return render_template("admin/profile.html", name="Admin", data=data)
+                return render_template("admin/profile.html", name=session['name'], data=data)
             else:
                 return render_template("public/profile.html", name=session['name'], data=data)
         else:
@@ -201,6 +205,18 @@ def change_password():
             return render_template('public/changePassword.html', name=session['name'])
     else:
         return redirect(url_for('loginPage'))
+    
+    
+@app.route('/forgot_password', methods=["POST", "GET"])
+def forgot_password():
+    if request.method=="POST":
+        jsonobj = request.get_json()
+        email=jsonobj['email']
+        print(email)
+        return "hello"
+    else:
+        return render_template('public/forgotPassword.html')
+        
 
 
 @app.route('/change_password/change', methods=["POST"])
@@ -208,7 +224,6 @@ def change_password_change():
     if session.get('id') != None:
         if request.method == "POST":
             jsonobj = request.get_json()
-            print(jsonobj)
             current_password = jsonobj["current_password"]
             new_password = jsonobj["new_password"]
             print(new_password)
@@ -280,7 +295,6 @@ def add_to_cart():
     if session.get('email') != None:
         args = request.args
         prod_id = args.get('id')
-        print(prod_id)
 
         if prod_id:
             myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
@@ -296,12 +310,13 @@ def add_to_cart():
                 shipping_fee = form[ 'shipping_fee' ]
                 total = form[ 'total' ]
                 if myDB.add_to_cart(session['id'],province,city,town,address,prod_id,product.prod_price,shipping_fee,total):
-                    sub="Welcome to Online Shoes Store"
+                    sub="Thanks for placing Order"
                     msg=Message(sub,sender=app_configration ['email_user'],
-                    recipients=[session['email']])
-           
-                    msg.body = "Hello {}! \n Welcome to Online Shoes Store\n Thanks for Joining us. Regards \n Online Shoes Store".format(session["name"])
-            
+                                recipients=[session['email']])
+                
+                    msg.body = """Hello {}! \n Thanks for Placing this order us.\n 
+                    Regards \n Online Shoes Store""".format(session['name'])
+                    
                     mail.send(msg)
                     new_stock=product.stock-1
                     myDB.decrese_stock(prod_id,new_stock)

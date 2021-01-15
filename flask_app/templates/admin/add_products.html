@@ -34,7 +34,7 @@ Add_Products
                 
                     <div class="form-group ">
                       <label for="exampleFormControlFile1" class="">Upload Img</label>
-                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                      <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
                     </div>
                  
             </div>
@@ -186,6 +186,11 @@ Add_Products
                 <span class="text-danger text-center my-3" id="fname_error"></span>
             </div>
         </div>
+        <select name="category" id="category">
+            <option value="">None</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
         <button class="btn btn-success col-3 mx-5 my-5">Add Product</button>
     </form>
 </div>
