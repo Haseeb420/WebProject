@@ -9,6 +9,7 @@ UPLOAD_FOLDER = '\\Web Project\\Shoes Store\\app\\static\\upload'
 
 # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
+
 @app.route('/admin_dashboard')
 def admin_dashboard():
     if session.get('rank') != None:
@@ -75,12 +76,13 @@ def add_product():
                 price = request.form['price']
                 price = int(price)
                 stock = request.form['stock']
-                category=request.form['category']
+                category = request.form['category']
                 stock = int(stock)
                 file = request.files['image']
-                
+
                 print(file.filename)
-                target = os.path.join(app_root, r'\\Web Project\\Shoes Store\\flask_app\\static\\upload')
+                target = os.path.join(
+                    app_root, r'\\Web Project\\Shoes Store\\flask_app\\static\\upload')
                 print(target)
                 filename = file.filename
                 destination = "/".join([target, filename])
@@ -88,7 +90,7 @@ def add_product():
                 file.save(destination)
                 myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
                                  app_configration["db_user_password"], app_configration["db_name"])
-                if myDB.add_new_product(name, product_desc, file.filename, stock, price,category):
+                if myDB.add_new_product(name, product_desc, file.filename, stock, price, category):
                     products = myDB.get_all_products()
                     print(products)
                     return render_template('admin/products.html', name=session['name'], products=products)
@@ -121,30 +123,32 @@ def delete_product():
 
 @app.route("/orders", methods=["POST", "GET"])
 def orders():
-    if session.get('email')!=None:
-        if session['rank']==1:
+    if session.get('email') != None:
+        if session['rank'] == 1:
             myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
-                         app_configration["db_user_password"], app_configration["db_name"])
-            orders=myDB.get_order()
-            return render_template("admin/orders.html", name=session['name'],orders=orders)
+                             app_configration["db_user_password"], app_configration["db_name"])
+            orders = myDB.get_order()
+            return render_template("admin/orders.html", name=session['name'], orders=orders)
         else:
-            return redirect( url_for( 'loginPage' ) )
+            return redirect(url_for('loginPage'))
     else:
-        return redirect( url_for( 'loginPage' ) )
-    
-    
+        return redirect(url_for('loginPage'))
+
+
+print(os.path)
+
+
 @app.route("/sales", methods=["POST", "GET"])
 def sales():
-    if session.get('email')!=None:
-        if session['rank']==1:
+    if session.get('email') != None:
+        if session['rank'] == 1:
             myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
-                         app_configration["db_user_password"], app_configration["db_name"])
+                             app_configration["db_user_password"], app_configration["db_name"])
             # orders=myDB.get_order()
-            total_sales=myDB.get_sales()
-            profit=myDB.get_profit()
-            return render_template("admin/sales.html", name=session['name'],total_sales=total_sales,profit=profit)
+            total_sales = myDB.get_sales()
+            profit = myDB.get_profit()
+            return render_template("admin/sales.html", name=session['name'], total_sales=total_sales, profit=profit)
         else:
-            return redirect( url_for( 'loginPage' ) )
+            return redirect(url_for('loginPage'))
     else:
-        return redirect( url_for( 'loginPage' ) )
-            
+        return redirect(url_for('loginPage'))

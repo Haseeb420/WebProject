@@ -22,7 +22,7 @@ const validateProfile = () => {
         document.getElementById('email_error').innerHTML = "Enter Valid email ";
         return false;
     }
-    else if (!(phone_pattern.test(phone)) ) {
+    else if (!(phone_pattern.test(phone))) {
         document.getElementById('phone_error').innerHTML = "Enter Valid phone";
         return false;
     }
@@ -160,35 +160,4 @@ function check_phone() {
             }
         }
     }
-}
-function send_verificationCode() {
-
-    let email=document.getElementById('email').value;
-    let flag=prompt("Is this you email "+email )
-    console.log(flag)
-    // document.getElementById("unique_email_error").innerHTML = "";
-    // let phone = document.getElementById('phone').value;
-    // console.log("phone :" + phone)
-    // d = {
-    //     "phone": phone
-    // }
-    // console.log(d["phone"])
-    // dataString = JSON.stringify(d)
-    // console.log(dataString)
-    // req = new XMLHttpRequest();
-    // req.open("POST", "/check_phone");
-    // req.setRequestHeader("Content-Type", "application/json");
-    // req.send(dataString)
-    // req.onreadystatechange = function () {
-    //     if (req.readyState == 4 && req.status == 200) {
-    //         response = req.responseText;
-    //         console.log(response);
-    //         responseJson = JSON.parse(response);
-    //         console.log(responseJson["phone_unique"]);
-    //         if (responseJson["phone_unique"]) {
-    //             document.getElementById("unique_phone_error").innerHTML = "phone already Exist";
-
-    //         }
-    //     }
-    // }
 }
