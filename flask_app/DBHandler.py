@@ -537,3 +537,31 @@ class DBHandler:
             if mydb != None:
                 mydb.close()
                 return profit
+
+    
+    def search_data(self,searchdata):
+        mydb = None
+        search_result = []
+        try:
+            mydb = pymysql.connect(
+                self.host, self.db_user, self.db_pswd, self.db_name)
+            mydb_cursor = mydb.cursor()
+            sql = "SELECT * FROM `product` WHERE product_name LIKE '%%s%'  product_des LIKE '%%s%'"
+            arg=(searchdata,searchdata)
+            mydb_cursor.execute(sql)
+            data = mydb_cursor.fetchall()
+            if data:
+                for x in data:    
+                    search_result.append(
+                        {
+                            'name':x[1]
+                        }
+                    )
+        except Exception as E:
+            print(str(E))
+            return search_result
+        finally:
+            if mydb != None:
+                mydb.close()
+                return search_result
+       

@@ -9,7 +9,10 @@ Login
     <div class="row">
         <div class="col-md-4 col-6 m-auto " id="login_form">
             <h6 class="text-center">Login Here</h6>
-            <form action="{{url_for('login')}}" method="POST">
+            {%if login_error%}
+                <p class="text-danger font-weight-bold text-center h5 my-2">{{ login_error }}</p>
+            {%endif%}
+            <form action="{{url_for('loginPage')}}" method="POST">
                 <div class="form-group">
                     <label for="username" id="form_label">Email address</label>
                     <input type="text" class="form-control" id="username" name="username" autocomplete="none" aria-describedby="emailHelp" name="username"
@@ -25,7 +28,7 @@ Login
             <a href=" {{ url_for( 'forgot_password' ) }} " class="float-left d-inline-block">Forgot Password</a>
             <a href="{{ url_for( 'home' ) }}" class="float-right d-inline-block">Back To Homepage</a><br>
             <a href="/signUp" class="float-left d-inline-block">Don't have an account?SignUp</a>
-           
+            
         </div>
     </div>
 </div>

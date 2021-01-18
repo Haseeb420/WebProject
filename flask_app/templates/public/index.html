@@ -11,127 +11,161 @@ Home
 <!-- main code starts here -->
 
 <div class="container">
-	<div class="row">
-		<div class="col-lg-2 col-md-1 col-1 d-none d-lg-block " id="sidebar">
-			<div class="shoes_catergory">
-				<h4>Categories</h4>
-				<hr>
-				<div class="subcategory">
-					{%if category%}
-					{% for c in category %}
-					<input type="checkbox category" name="{{c}}" id="{{c}}"/>
-					<label class="font-weight-bold" for="#male">{{c}}</label>
-					<br>
-					{%endfor%}
-					{%endif%}
-				</div>
-				<hr>
-				<hr>
-				<h4>Sizes</h4>
-				<hr>
-				<div class="subcategory">
-					<input type="checkbox" name="36" id="36" \>
-					<label for="#36">36</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="37" id="37" \>
-					<label for="#37">37</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="38" id="38" \>
-					<label for="#38">38</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="39" id="39" \>
-					<label for="#39">39</label>
-				</div>
+    <div class="row">
+        <div class="col-lg-2 col-md-1 col-1 d-none d-lg-block " id="sidebar">
+            <div class="list-group">
+                <div class="shoes_catergory">
+                    <h4>Categories</h4>
+                    <hr>
+                    {%if category%}
+                    {% for c in category %}
 
-				<div class="subcategory">
-					<input type="checkbox" name="40" id="40" \>
-					<label for="#40">40</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="41" id="41" \>
-					<label for="#41">41</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="42" id="42" \>
-					<label for="#42">42</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="43" id="43" \>
-					<label for="#43">43</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="44" id="44" \>
-					<label for="#44">44</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="45" id="45" \>
-					<label for="#45">45</label>
-				</div>
-				<div class="subcategory">
-					<input type="checkbox" name="46" id="46" \>
-					<label for="#46">46</label>
-				</div>
+                    <div class="form-check">
+                        <input class="form-check-input  category" type="checkbox" name="{{ c }}" value="{{c}}"
+                            id="{{ c }}">
+                        <label class="form-check-label" for="{{ c }}">
+                            {{c}}
+                        </label>
+                    </div>
+                    {%endfor%}
+                    {%endif%}
+                </div>
+                <hr>
+                <h4>Price Range</h4>
+                <hr>
+                <input type="hidden" name="minimum_price" id="minimum_price" value="350" />
+                <input type="hidden" name="maximum_price" id="maximum_price" value="7000" />
+                <p id="amount">350-7000</p>
 
-				<hr>
+                <div id="slider-range"></div>
+            </div>
 
 
 
+        </div>
+        <div class="col-lg-10 col-12">
+            <div class="row my-5">
+                {% if products %}
 
-			</div>
-		</div>
-		<div class="col-lg-10 col-12">
-			<div class="row my-5">
-				{% if products %}
+                {% for product in products%}
 
-				{% for product in products: %}
+                {% set prod_img="upload/"+product.prod_img %}
 
-				{% set prod_img="upload/"+product.prod_img %}
+                <a href="/add_to_cart?id={{ product.prod_id }}" id='{{ product.prod_name}}'
+                    mclass="text-decoration-none">
+                    <div class="col-lg-3 offset-lg-1 my-3">
+                        <div class="card" style="width: 12rem;">
+                            <img src="{{ url_for('static', filename=prod_img ) }}" width="100%" height="150px"
+                                alt="img1">
+                            <div class="card-body">
 
-				<a href="/add_to_cart?id={{ product.prod_id }}" class="text-decoration-none">
-					<div class="col-lg-3 offset-lg-1 my-3">
-						<div class="card" style="width: 12rem;">
-							<img src="{{ url_for('static', filename=prod_img ) }}" width="100%" height="150px"
-								alt="img1">
-							<div class="card-body">
+                                <p class="card-text text-info text-truncate">{{ product.prod_name }}</p>
+                                <h5 class="card-title text-danger font-weight-bold">Rs {{ product.prod_price }}</h5>
 
-								<p class="card-text text-info text-truncate">{{ product.prod_name }}</p>
-								<h5 class="card-title text-danger font-weight-bold">Rs {{ product.prod_price }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
-							</div>
-						</div>
-					</div>
-				</a>
-			
-				{% endfor %}
+                {% endfor %}
 
-				{% endif %}
-			</div>
+                {% endif %}
+            </div>
 
 
-			<!-- products code ends here -->
+            <!-- products code ends here -->
 
-			<!-- pagination start here -->
-			<div aria-label="Page navigation example mt-5">
-				<ul class="pagination justify-content-center">
-					<li class="page-item disabled">
-						<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li>
-				</ul>
-			</div>
-			<!-- pagination ends here -->
-		</div>
+            <!-- pagination start here -->
+            <div aria-label="Page navigation example mt-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- pagination ends here -->
+        </div>
 
-	</div>
+    </div>
 </div>
 <!-- main code ends here -->
+<!-- 
+    <script>
+    
+    console.log(prod_ids)
+    console.log(prod_name)
+    function searcFuntion(){
+        let searchdata=document.getElementById('searchdata').value.toUpperCase();
+        for(let j=0;j<prod_name.length;j++)
+        {
+            if(prod_name.indexOf(searchdata)>-1){
+                let i=prod_name.indexOf(searchdata);
+                document.getElementById(prod_name[i]).style.display="none";
+            }
+        }
+    }
+    </script> -->
+<script>
+    var name = ""
+    id = 0
+    var prod_name = [];
+    var prod_ids = [];
+    {% if products %}
+    {% for product in products %}
+    name = '{{product.prod_name}}';
+    id = '{{ product.prod_id }}'
+    id = Number(id)
+    prod_ids.push(id);
+    prod_name.push(name)
 
+    {% endfor %}
+    {% endif %}
+    function searchFuntion() {
+        for (let i = 0; i < prod_name.length; i++) {
+            document.getElementById(prod_name[i]).style.display = 'none';
+        }
+        let searchdata = document.getElementById('searchdata').value;
+        if(searchdata=='')
+        {
+            for (let i = 0; i < prod_name.length; i++) {
+                document.getElementById(prod_name[i]).style.display = '';
+            }
+        }
+        console.log("searchdata :" + searchdata)
+        d = {
+            "searchdata": searchdata
+        }
+        console.log(d["searchdata"])
+        dataString = JSON.stringify(d)
+        console.log(dataString)
+        req = new XMLHttpRequest();
+        req.open("POST", "/search_data");
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(dataString)
+        req.onreadystatechange = function () {
+            if (req.readyState == 4 && req.status == 200) {
+                response = req.responseText;
+                console.log(response);
+                jsonobj = JSON.parse(response)
+                console.log(jsonobj);
+                for (key in jsonobj) {
+                    for (x in jsonobj[key]) {
+                        for (x2 in jsonobj[key][x]) {
+                            name=jsonobj[key][x][x2];
+                            console.log(name)
+                            document.getElementById(name).style.display = '';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+</script>
 {% endblock content %}

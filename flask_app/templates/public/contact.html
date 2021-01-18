@@ -64,14 +64,30 @@ all the feedback or form code start here for contact page -->
                 <h5>Message Us </h5>
             </div>
             <form action="/contact_us" method="post">
+                {% if name  %}
                 <div class="form-group">
+                    <input type="text" value="{{ name }}" readonly class="form-control" name="name"
+                        id="exampleInputText1">
+                </div>
+                {%else %}
+                                    <div class="form-group">
                     <input type="text" placeholder="Enter your Name" class="form-control" name="name"
                         id="exampleInputText1">
                 </div>
+
+                {% endif %}
+                {% if email %}
+                <div class="form-group">
+                    <input type="Email" value="{{ email }}" readonly class="form-control" name="Email"
+                        id="exampleInputEmail1">
+                </div>
+                {% else %}
                 <div class="form-group">
                     <input type="Email" placeholder="Enter your Email" class="form-control" name="Email"
                         id="exampleInputEmail1">
                 </div>
+
+                {% endif %}
                 <div class="form-group">
                     <input type="text" placeholder="Subject" class="form-control" name="subject" id="exampleInputText2">
                 </div>
@@ -82,9 +98,9 @@ all the feedback or form code start here for contact page -->
                 <button type="submit" id="btn" class="btn btn-primary">Send</button>
             </form>
             {%if msg%}
-            <p class="text-primary">{{msg}}</p>
+            <p class="text-success h5">{{msg}}</p>
             {%elif error_msg%}
-            <p class="text-danger">{{error_msg}}</p>
+            <p class="text-danger h5">{{error_msg}}</p>
 
             {%endif%}
         </div>

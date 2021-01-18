@@ -152,12 +152,7 @@ function check_phone() {
         if (req.readyState == 4 && req.status == 200) {
             response = req.responseText;
             console.log(response);
-            responseJson = JSON.parse(response);
-            console.log(responseJson["phone_unique"]);
-            if (responseJson["phone_unique"]) {
-                document.getElementById("unique_phone_error").innerHTML = "phone already Exist";
-
-            }
+            
         }
     }
 }

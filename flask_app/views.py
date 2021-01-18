@@ -54,14 +54,12 @@ def about():
 def contact():
     if session.get('rank') != None:
         if session['rank'] == 2:
-            return render_template("public/contact.html", name=session['name'])
+            return render_template("public/contact.html", name=session['name'],email=session['email'])
     else:
         return render_template('public/contact.html',)
 
 
-@app.route("/login")
-def loginPage():
-    return render_template('public/login.html')
+
 
 
 @app.route("/signUp", methods=["POST", "GET"])
@@ -109,8 +107,10 @@ def signUp():
         return render_template('public/signUp.html')
 
 
-@app.route("/login_data", methods=["POST", "GET"])
-def login():
+
+    
+@app.route("/login", methods=["POST", "GET"])
+def loginPage():
     if request.method == "POST":
         email = request.form['username']
         password = request.form['password']
@@ -131,11 +131,11 @@ def login():
                 return redirect(url_for('home'))
 
         else:
-            return redirect(url_for('loginPage'))
+            return render_template('public/login.html',login_error="email or password not valid......")
 
     else:
-
-        return redirect(url_for('loginPage'))
+        return render_template('public/login.html')
+       
 
 
 @app.route('/profile')
@@ -185,8 +185,10 @@ def contact_us():
         myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
                          app_configration["db_user_password"], app_configration["db_name"])
         if myDB.contact_us(name, email, subject, content):
-            msg = "Your has been send....."
-            return render_template('contact.html', msg=msg)
+            msg = "Your feedback has been send. Thanks for your feedback....."
+            if session.get('id')!=None:
+                if session['id']:
+                    return render_template('public/contact.html',name=session['name'],email=session['email'], msg=msg)
         else:
             error_msg = "Your feedback not send....."
             return render_template('public/contact.html', error_msg=error_msg)
@@ -394,6 +396,52 @@ def update_profile():
     else:
         return redirect(url_for('loginPage'))
 
+
+
+
+@app.route('/search_data', methods=["POST"])
+def search_data():
+    if request.method == "POST":
+        jsonobj = request.get_json()
+        searchdata = jsonobj["searchdata"]
+        dic = {}
+        myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
+                         app_configration["db_user_password"], app_configration["db_name"])
+        data=myDB.search_data(searchdata)
+        if data:
+            data=data
+            dic['result_data']=data
+            return jsonify(dic)
+        else:
+            dic["name"]="Muhammad Haseeb"
+            return jsonify(dic)
+
+    else:
+        redirect(url_for(home))
+
+
+@app.route('/filter_products', methods=["POST"])
+def filter_products():
+    if request.method == "POST":
+        jsonobj = request.get_json()
+        print(jsonobj)
+        # searchdata = jsonobj["searchdata"]
+        # dic = {}
+        # myDB = DBHandler(app_configration["host"], app_configration["db_user_name"],
+        #                  app_configration["db_user_password"], app_configration["db_name"])
+        # data=myDB.search_data(searchdata)
+        # if data:
+        #     data=data
+        #     dic['result_data']=data
+        #     return jsonify(dic)
+        # dic["name"]="Muhammad Haseeb"
+        dic={"name":"Muhammad Haseeb"}
+        return jsonify(dic)
+
+    else:
+        redirect(url_for(home))
+        
+        
 
 @app.route('/logout')
 def logout():
