@@ -1,4 +1,6 @@
 {
     "emmet.showSuggestionsAsSnippets": true,
-    "emmet.extensionsPath": "snippets/snippets.json"
+    "emmet.extensionsPath": [
+        "snippets/snippets.json"
+    ]
 }
